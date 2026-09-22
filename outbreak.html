@@ -2,22 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rare Friends: Outbreak</title>
   <style>
-    :root { --ink:#f3ead8; --red:#7a2a1c; --panel:#1a100c; }
-    * { box-sizing: border-box; }
-    html, body { margin:0; height:100%; background:#0a0506; color:var(--ink); font: 14px/1.4 monospace; overflow:hidden; }
+    html, body { margin:0; height:100%; background:#0a0506; color:#f3ead8; font: 14px/1.4 monospace; overflow:hidden; }
     #wrap { height:100%; display:flex; align-items:center; justify-content:center; padding:6px; }
     #frame { width:min(960px, 100vw - 12px); aspect-ratio:960/640; max-height:100dvh; position:relative; background:#120c0a; border:2px solid #3a120c; overflow:hidden; }
     canvas { display:block; width:100%; height:100%; image-rendering:pixelated; touch-action:none; }
-    #hud { position:absolute; top:8px; left:8px; right:8px; display:flex; gap:5px; z-index:3; }
-    #hud .stat { background:rgba(16,8,6,.92); border:1px solid var(--red); padding:7px 9px; font-size:12px; }
+    #hud { position:absolute; top:8px; left:8px; z-index:3; }
+    #hud .stat { background:rgba(16,8,6,.92); border:1px solid #7a2a1c; padding:7px 9px; font-size:12px; }
     .modal { position:absolute; inset:0; background:rgba(8,4,2,.72); display:flex; align-items:center; justify-content:center; z-index:10; padding:12px; }
-    .sheet { width:min(460px,100%); max-height:92%; overflow:auto; background:#1c1210; border:2px solid #f3ead8; padding:16px; }
-    .sheet button { font:inherit; margin:4px 4px 0 0; padding:10px 12px; border:2px solid #f3ead8; background:#1a100c; color:#f3ead8; }
-    .sheet button.primary { background:#ccff00; color:#111; border-color:#111; }
-    .item { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #3a241c; }
+    .sheet { width:min(460px,100%); overflow:auto; background:#1c1210; border:2px solid #f3ead8; padding:16px; }
+    .sheet button { font:inherit; margin:4px; padding:10px 12px; border:2px solid #f3ead8; background:#1a100c; color:#f3ead8; }
+    .sheet button.primary { background:#ccff00; color:#111; }
+    .item { display:flex; justify-content:space-between; padding:8px 0; }
     .hidden { display:none !important; }
   </style>
 </head>
@@ -30,6 +28,8 @@
     </div>
   </div>
   <script src="game-a.js"></script>
+  <script src="bg-yard.js"></script>
+  <script src="bg-horde.js"></script>
   <script src="game-b.js"></script>
   <script src="game-draw.js"></script>
 </body>
