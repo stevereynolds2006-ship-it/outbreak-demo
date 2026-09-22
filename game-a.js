@@ -26,9 +26,9 @@ const canvas = document.getElementById("c");
 const ctx = canvas.getContext("2d");
 const keys = new Set();
 const STATIONS = [
-  { id:"buy", label:"Supply locker", x:220, y:390, r:150 },
-  { id:"raid", label:"Outbreak gate", x:700, y:230, r:150 },
-  { id:"arms", label:"Weapons crate", x:620, y:480, r:130 }
+  { id:"buy", label:"Supply locker", x:190, y:410, r:140 },
+  { id:"raid", label:"Outbreak gate", x:800, y:270, r:140 },
+  { id:"arms", label:"Weapons crate", x:130, y:505, r:120 }
 ];
 const yardImg = new Image(); yardImg.src = "yard.jpg";
 const hordeImg = new Image(); hordeImg.src = "horde.jpg";
