@@ -2,7 +2,7 @@
 
 Playable zombie-apocalypse demo for the Rare Friends vibeathon.
 
-Repo: outbreak.html
+Repo: outbreak-playable-demo.html
 
 ## Play
 
