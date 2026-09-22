@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Rare Friends: Outbreak — playable demo</title>
+  <style>
+    :root { --ink:#f3ead8; --red:#7a2a1c; --lime:#ccff00; --panel:#1a100c; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { margin:0; height:100%; background:radial-gradient(ellipse at 50% 20%, #3a1810 0%, #0a0506 70%); color:var(--ink);
+      font: 14px/1.4 ui-monospace, Menlo, monospace; overflow:hidden; }
+    #wrap { height:100%; display:flex; align-items:center; justify-content:center; padding:6px; }
+    #frame { width:min(960px, 100vw - 12px); aspect-ratio:960/640; max-height:100dvh;
+      position:relative; background:#120c0a; border:2px solid #3a120c; overflow:hidden; }
+    canvas { display:block; width:100%; height:100%; image-rendering:pixelated; touch-action:none; }
+    #hud { position:absolute; top:8px; left:8px; right:8px; display:flex; flex-wrap:wrap; gap:5px; align-items:center; z-index:3; }
+    #hud .stat { margin-right:auto; background:rgba(16,8,6,.92); border:1px solid var(--red); padding:7px 9px; font-size:12px; }
+    #hud button { font:inherit; color:var(--ink); background:var(--panel); border:2px solid var(--ink); padding:8px 10px; min-height:40px; cursor:pointer; }
+    #hud button.act { background:#ccff00; color:#111; border-color:#111; }
+    #banner { position:absolute; top:52px; left:8px; background:var(--red); color:#fff7e8; padding:5px 8px;
+      font-size:10px; letter-spacing:.06em; text-transform:uppercase; z-index:3; pointer-events:none; max-width:70%; }
+    .modal { position:absolute; inset:0; background:rgba(8,4,2,.72); display:flex; align-items:center; justify-content:center; z-index:10; padding:12px; }
+    .sheet { width:min(460px,100%); max-height:92%; overflow:auto; background:#1c1210; border:2px solid #f3ead8; padding:16px; }
+    .sheet h2 { margin:0 0 10px; font-size:16px; }
+    .sheet table { width:100%; border-collapse:collapse; font-size:12px; margin:10px 0; }
+    .sheet th, .sheet td { text-align:left; padding:6px 4px; border-bottom:1px solid #3a241c; }
+    .sheet button { font:inherit; margin:4px 4px 0 0; padding:10px 12px; min-height:40px; cursor:pointer; border:2px solid #f3ead8; background:#1a100c; color:#f3ead8; }
+    .sheet button.primary { background:#ccff00; color:#111; border-color:#111; }
+    .sheet button:disabled { opacity:.45; cursor:default; }
+    .item { display:flex; justify-content:space-between; gap:8px; align-items:center; padding:8px 0; border-bottom:1px solid #3a241c; }
+    .reward { text-align:center; }
+    .reward .mark { font-size:48px; display:block; margin-bottom:6px; }
+    .note { font-size:12px; color:#cbb79a; }
+    .hidden { display:none !important; }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="frame" role="application" aria-label="Rare Friends Outbreak demo">
+      <canvas id="c" width="960" height="640"></canvas>
+      <div id="banner" class="hidden">Day 19</div>
+      <div id="hud">
+        <span class="stat" id="stat">Demo · 50 RF · 3 kits</span>
+        <button type="button" class="act hidden" id="btnBuy">Locker</button>
+        <button type="button" class="act hidden" id="btnRaid">Gate</button>
+        <button type="button" class="hidden" id="btnStash">Stash</button>
+        <button type="button" class="hidden" id="btnRules">Rules</button>
+        <button type="button" class="hidden" id="btnSettings">Settings</button>
+      </div>
+      <div id="modal" class="modal hidden"></div>
+    </div>
+  </div>
+<script src="game.js"></script>
+</body>
+</html>
