@@ -1,18 +1,11 @@
 function draw(now) {
   function zombie(x, y, t, tint) {
     const limp = Math.floor(t / 180) % 2;
-    ctx.save();
-    ctx.translate(x, y - limp);
-    ctx.fillStyle = tint || "#5a7a48";
-    ctx.fillRect(-14, -36, 28, 36);
-    ctx.fillStyle = "#3a5230";
-    ctx.fillRect(-10, -32, 8, 8);
-    ctx.fillRect(2, -32, 8, 8);
-    ctx.fillStyle = "#8a2020";
-    ctx.fillRect(-6, -22, 12, 6);
-    ctx.fillStyle = "#3a5230";
-    ctx.fillRect(-12, -2, 8, 14 + limp * 4);
-    ctx.fillRect(4, -2, 8, 14 + (1 - limp) * 4);
+    ctx.save(); ctx.translate(x, y - limp);
+    ctx.fillStyle = tint || "#5a7a48"; ctx.fillRect(-14, -36, 28, 36);
+    ctx.fillStyle = "#3a5230"; ctx.fillRect(-10, -32, 8, 8); ctx.fillRect(2, -32, 8, 8);
+    ctx.fillStyle = "#8a2020"; ctx.fillRect(-6, -22, 12, 6);
+    ctx.fillStyle = "#3a5230"; ctx.fillRect(-12, -2, 8, 14 + limp * 4); ctx.fillRect(4, -2, 8, 14 + (1 - limp) * 4);
     ctx.restore();
   }
   if (state.scene === "horde") {
@@ -32,12 +25,20 @@ function draw(now) {
   } else {
     if (yardImg.complete && yardImg.naturalWidth) ctx.drawImage(yardImg, 0, 0, 960, 640);
     else { ctx.fillStyle = "#1a1014"; ctx.fillRect(0, 0, 960, 640); }
-    ctx.fillStyle = "#6a5040"; ctx.fillRect(575, 455, 54, 42);
-    ctx.fillStyle = "#8a6a48"; ctx.fillRect(575, 448, 54, 12);
-    ctx.strokeStyle = "#1a100c"; ctx.strokeRect(575, 448, 54, 49);
-    ctx.fillStyle = "#ccff00"; ctx.fillRect(548, 428, 118, 18);
-    ctx.fillStyle = "#111"; ctx.font = "11px monospace"; ctx.textAlign = "center";
-    ctx.fillText("Weapons crate", 607, 441);
+    ctx.fillStyle = "#6a5040"; ctx.fillRect(102, 488, 54, 42);
+    ctx.fillStyle = "#8a6a48"; ctx.fillRect(102, 481, 54, 12);
+    ctx.strokeStyle = "#1a100c"; ctx.strokeRect(102, 481, 54, 49);
+    const n = near();
+    ctx.font = "11px monospace"; ctx.textAlign = "center";
+    const marks = [{s:STATIONS[0], extraY:-78},{s:STATIONS[1], extraY:-78},{s:STATIONS[2], extraY:-62}];
+    for (const m of marks) {
+      const s = m.s;
+      ctx.fillStyle = n === s ? "#ccff00" : "#f3ead8";
+      const tw = Math.max(118, ctx.measureText(s.label).width + 16);
+      ctx.fillRect(s.x - tw / 2, s.y + m.extraY, tw, 20);
+      ctx.strokeStyle = "#111"; ctx.strokeRect(s.x - tw / 2, s.y + m.extraY, tw, 20);
+      ctx.fillStyle = "#111"; ctx.fillText(s.label, s.x, s.y + m.extraY + 14);
+    }
     ctx.fillStyle = "#111"; ctx.fillRect(200, 588, 560, 36);
     ctx.strokeStyle = "#c8b48a"; ctx.strokeRect(200, 588, 560, 36);
     ctx.fillStyle = "#f3ead8"; ctx.font = "13px monospace"; ctx.textAlign = "center";
